@@ -1,0 +1,22 @@
+.list-fri-ver{
+    z-index: 200 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .title{
+        padding-top: 20px;
+        padding-left: 20px;
+        margin-bottom: 5px;
+        font-size: 1.23rem;
+        font-weight: 700;
+    }
+    .line{
+        margin-left: auto;
+        margin-right: auto;
+        width: 96%;
+        background-color: rgba(184, 184, 184, 0.6);
+        height: 0.8px;
+        margin-bottom: 5px;
+    }
+}

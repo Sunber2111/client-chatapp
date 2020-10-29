@@ -1,0 +1,20 @@
+.form-login{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    padding-right: 10%;
+    justify-content: center;
+    height: 100%;
+    *{
+        margin-bottom: 20px;
+    }
+    &-title{
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+    .clear{
+        height: 0.01rem;
+        background-color: #afafaf;
+        margin-top: 20px;
+    }
+}

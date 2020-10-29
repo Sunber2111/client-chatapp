@@ -1,0 +1,36 @@
+.login-page {
+  height: 100%;
+  .wrap-cont {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .cont {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url("../../app/assets/bg.jpg");
+      background-size: cover;
+      overflow: auto;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      filter: brightness(30%);
+    }
+    .title-cont {
+      font-size: 5.2rem;
+      color: white;
+      z-index: 200 !important;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif;
+      text-shadow: #9e9e9ee5 1px 0 10px;
+      margin: 0px !important;
+    }
+    .title-cont-sub {
+      color: rgb(161, 161, 161);
+      font-family: "Open Sans", Helvetica, Arial, sans-serif;
+      z-index: 200 !important;
+      text-shadow: #9e9e9ee5 1px 0 10px;
+    }
+  }
+}
