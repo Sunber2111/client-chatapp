@@ -57,6 +57,10 @@ export const createMyRoom = (rooms: string) => {
   socket.emit("privatechatroom", rooms);
 };
 
+export const disconnectToServer = ()=>{
+  socket.close()
+}
+
 export const sendMessage = (
   message: string,
   idUserSend: string,
