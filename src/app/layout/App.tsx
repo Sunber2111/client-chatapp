@@ -35,8 +35,6 @@ const App: React.FC<RouteComponentProps> = () => {
         dispath(
           checkCurrentSuccess({ userId: value.userId, image: value.image })
         );
-
-        createMyRoom(value.userId);
       })
       .catch((err) => {
         dispath(checkCurrentFail());

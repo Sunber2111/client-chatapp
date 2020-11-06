@@ -7,50 +7,53 @@ import { IAcceptFriend, IReciveInvitation } from "app/models/friend";
 import { onAddNewItem } from "features/nav/navSlice";
 import { IUserRecive } from "app/models/user";
 const CHAT_URL = process.env.REACT_APP_CHAT_URL as string;
-const socket = io.connect(CHAT_URL);
 let myId: string = "";
-
-socket.on("new_msg", (data: IMessageReciveData) => {
-  const payload: IMessageRecive = {
-    content: data.content,
-    idSend: data.idUserSend,
-    idRecive: data.idUserRecive,
-    isSend: myId === data.idUserSend ? true : false,
-    conversationId: data.conversationId,
-    image: data.image,
-    username: data.username,
-  };
-  appDispatch(addMessage(payload));
-});
-
-socket.on("recive_invitation_friend", (data: IReciveInvitation) => {
-  appDispatch(onAddNewItem(data));
-});
-
-socket.on("addNewUserToListChat", (user: IAcceptFriend) => {
-  console.log(user);
-  console.log(myId);
-
-  appDispatch(
-    onAddUserChat({
-      content: "",
-      conversationId: user.conversationId,
-      isSend: false,
-      userFriendId: user._id,
-      username: user.username,
-      birthday: user.birthday,
-      email: user.email,
-      image: user.image,
-      sex: user.sex,
-      time: "",
-    })
-  );
-});
+let socket: SocketIOClient.Socket;
 
 export const createMyRoom = (rooms: string) => {
+
   myId = rooms;
-  console.log('create room');
+  console.log('create chat room');
   
+  socket = io.connect(CHAT_URL);
+
+  socket.on("new_msg", (data: IMessageReciveData) => {
+    const payload: IMessageRecive = {
+      content: data.content,
+      idSend: data.idUserSend,
+      idRecive: data.idUserRecive,
+      isSend: myId === data.idUserSend ? true : false,
+      conversationId: data.conversationId,
+      image: data.image,
+      username: data.username,
+    };
+    appDispatch(addMessage(payload));
+  });
+
+  socket.on("recive_invitation_friend", (data: IReciveInvitation) => {
+    appDispatch(onAddNewItem(data));
+  });
+
+  socket.on("addNewUserToListChat", (user: IAcceptFriend) => {
+    console.log(user);
+    console.log(myId);
+
+    appDispatch(
+      onAddUserChat({
+        content: "",
+        conversationId: user.conversationId,
+        isSend: false,
+        userFriendId: user._id,
+        username: user.username,
+        birthday: user.birthday,
+        email: user.email,
+        image: user.image,
+        sex: user.sex,
+        time: "",
+      })
+    );
+  });
+
   socket.emit("privatechatroom", rooms);
 };
 
