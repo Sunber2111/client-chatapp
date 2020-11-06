@@ -3,6 +3,7 @@ import { IErrorFromServer } from "app/models/error";
 import accountApi from "app/api/account";
 import { IAccount, ILogginSuccess } from "app/models/account";
 import { showError } from "app/notifycation/notify";
+import { createMyRoom } from "app/api/chat";
 
 type LoginState = {
   isLoggedIn: Boolean;
@@ -23,6 +24,7 @@ export const login = createAsyncThunk(
   async (account: IAccount, { rejectWithValue }) => {
     try {
       const data = await accountApi.login(account);
+      createMyRoom(data.userId)
       return data;
     } catch (error) {
       let err = error as IErrorFromServer;
