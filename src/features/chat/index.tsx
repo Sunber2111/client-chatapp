@@ -8,7 +8,6 @@ import ListChat from "./components/listchat/ListChat";
 import "./styles.scss";
 import UserInfo from "./components/userinfo/UserInfo";
 import SendBar from "./components/sendbar";
-import { createMyRoom } from "app/api/chat";
 
 const Chat = () => {
   const userId = useSelector((s: RootState) => s.login.userId);
@@ -18,7 +17,6 @@ const Chat = () => {
   useEffect(() => {
     if (userId) {
       dispatch(getListMessage());
-      createMyRoom(userId)
     }
   }, []);
 

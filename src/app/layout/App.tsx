@@ -23,8 +23,8 @@ import Friend from "features/friend";
 import PrivateRoute from "./PrivateRoute";
 import { createMyRoom } from "app/api/chat";
 
-const App: React.FC<RouteComponentProps> = () => {
-  const  appLoaded = useSelector((s: RootState) => s.login.appLoaded);
+const App: React.FC<RouteComponentProps> = ({ location }) => {
+  const appLoaded = useSelector((s: RootState) => s.login.appLoaded);
 
   const dispath = useDispatch();
 
@@ -35,6 +35,7 @@ const App: React.FC<RouteComponentProps> = () => {
         dispath(
           checkCurrentSuccess({ userId: value.userId, image: value.image })
         );
+        createMyRoom(value.userId)
       })
       .catch((err) => {
         dispath(checkCurrentFail());
@@ -53,7 +54,7 @@ const App: React.FC<RouteComponentProps> = () => {
           <Fragment>
             <Navigation />
             <Switch>
-              <PrivateRoute component={Chat} path="/chat" />
+              <PrivateRoute key={location.key} component={Chat} path="/chat" />
               <PrivateRoute component={Friend} path="/friend" />
             </Switch>
           </Fragment>
