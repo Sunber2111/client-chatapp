@@ -14,6 +14,7 @@ import { logoutAccount, setNewImage } from "features/login/loginSlice";
 import imageApi from "app/api/image";
 import { IAddImageSuccess } from "./type/image";
 import { NavLink } from "react-router-dom";
+import { clearAllState } from "features/chat/chatSlice";
 
 const Navigation = () => {
   const { image } = useSelector((s: RootState) => s.login);
@@ -36,6 +37,7 @@ const Navigation = () => {
 
   const handleLogout = () => {
     dispatch(logoutAccount());
+    dispatch(clearAllState());
   };
 
   const handleFileInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {

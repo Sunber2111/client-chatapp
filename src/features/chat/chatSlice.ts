@@ -141,6 +141,7 @@ const chatSlice = createSlice({
         state.listFriendSearch[index].isSend = true;
       }
     },
+    clearAllState: (state) => initialState,
   },
   extraReducers: (builder) => {
     builder.addCase(
@@ -174,6 +175,7 @@ export const {
   setIdUserRecive,
   setWaitForAdd,
   onAddUserChat,
+  clearAllState,
 } = actions;
 
 export default reducer;
