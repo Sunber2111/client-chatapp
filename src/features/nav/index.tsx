@@ -39,7 +39,7 @@ const Navigation = () => {
   const handleLogout = () => {
     dispatch(logoutAccount());
     dispatch(clearAllState());
-    disconnectToServer()
+    disconnectToServer();
   };
 
   const handleFileInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
